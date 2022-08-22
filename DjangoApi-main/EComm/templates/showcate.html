@@ -1,0 +1,50 @@
+<html>
+<head>
+	<title>Show Category</title>
+
+</head>
+<body>
+	<h1>Category Availables are</h1>
+	<table border="2">
+		<tr>
+			<th>Id</th>
+			<th>Category Name</th>
+		</tr>
+
+		{% for i in response %}
+		<tr>
+			<td>{{i.id}}</td>
+			<td>{{i.name}}</td>
+			<td><button type="submit" name="id" id="id" onclick="Redirect({{i.id}})">edit</button></td>
+			<td><button type="button" onclick="DelCate({{i.id}})">delete</button></td>
+			{% endfor %}
+		</tr>
+			
+		
+	</table>
+
+	<form action="/DelCategory/" id="delete_cat" method="POST" >
+		{% csrf_token %}
+		
+		<input type="hidden" id="delcat" name="id" placeholder="input id">
+		{% comment %} <button type="submit" id=i  value="Submit">Submit</button> {% endcomment %}
+	
+	</form>
+<script>
+
+	function DelCate(id)
+	{
+		let valu=document.getElementById("delcat");
+		valu.value=id
+		let form =  document.getElementById('delete_cat')
+		form.submit()
+	}
+
+	function Redirect(i)
+	{
+		window.location = "http://127.0.0.1:8000/updateCate/"+i+"/"
+	}
+		
+	</script>
+</body>
+</html>

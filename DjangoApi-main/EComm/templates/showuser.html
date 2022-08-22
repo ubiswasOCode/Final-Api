@@ -1,0 +1,70 @@
+
+<html>
+	<head>
+		<title></title>
+	</head>
+<body>
+	<h2>All User Is</h2>
+	<p><b> List</b></p>
+	
+
+	<table border="2">
+		<tr>
+			<th>Id</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+			<th>Username</th>
+			<th>Age</th>
+			<th>Gender</th>
+			<th></th>
+			<th></th>
+	
+			
+			
+
+		</tr>
+		{% for i in response %}
+		<tr>
+			<td>{{i.id}}</td>
+			<td>{{i.first_name}}</td>
+			<td>{{i.last_name}}</td>
+			<td>{{i.email}}</td>
+			<td>{{i.username}}</td>
+			<td>{{i.age}}</td>
+			<td>{{i.gender}}</td>
+			<td><button type="submit" onclick="updateusr({{i.id}})">edit</button></td>
+			<td><button type="submit" onclick="deleteuser({{i.id}})">delete</button></td>
+		</tr>
+		{% endfor %}
+		
+	</table>
+
+<form action="/deleteuser/" id="del_user" method="POST" >
+	{% csrf_token %}
+	
+	<input type="hidden" id="deluer" name="id" placeholder="input id">
+
+
+</form>
+
+<script>
+
+	function deleteuser(id)
+	{
+		let valu=document.getElementById("deluer");
+		valu.value=id
+		let form =  document.getElementById('del_user')
+		form.submit()
+	}
+	function updateusr(i)
+	{
+		window.location = "http://127.0.0.1:8000/Updateuser/"+i+"/"
+	}
+		
+
+</script>
+
+</body>
+	
+</html>

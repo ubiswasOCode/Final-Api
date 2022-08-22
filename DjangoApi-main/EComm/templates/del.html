@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<title></title>
+	</head>
+<body>
+	<h2>All User Is</h2>
+	<p><b> List</b></p>
+	{% for i in response %}
+	<tr>
+		<td>{{i.id}}</td>
+		<td>{{i.first_name}}</td>
+		<td>{{i.last_name}}</td>
+		<td>{{i.email}}</td>
+		<td>{{i.username}}</td>
+		<td>{{i.age}}</td>
+		<td>{{i.gender}}</td>
+		</tr>
+	{% endfor %}
+	
+</body>
+</html>

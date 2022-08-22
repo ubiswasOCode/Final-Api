@@ -1,0 +1,53 @@
+
+<html>
+	<head>
+		<title>Update Product</title>
+	
+	</head>
+<body>
+<h2>Update Product Detail</h2>
+
+<form action='' id="update_prod" method="POST">
+
+	{% csrf_token %}
+
+	<label for="">Product Id</label>{{id}}
+	
+	<br><br>
+
+	<label for="">Category Id</label>
+	<input type="text"  id="category" name="category" placeholder="Input Category Id">
+	<br><br>
+	
+	<label for="">Name</label>
+	<input type="text" id="name "name="name" placeholder="Enter Name">
+	<br><br> 
+
+	<label for="">Brand</label>
+	<input type="text" id="brand"name="brand" placeholder="Enter Brand Name">
+	<br><br>
+	
+	<label for="">Description</label>
+	<input type="text" id="description" name="description" placeholder="Enter Description">
+	<br><br>
+
+	<label for="">Price</label>
+	<input type="number" id="price"name="price" placeholder="Enter Price">
+	<br><br>
+
+	<button type="button" onclick="submitForm({{id}})">Update </button>
+
+</form>
+
+</body>
+
+<script>
+	function submitForm(id){
+		let form =  document.getElementById('update_prod')
+		form.action = "/UpdatePro/"+id+"/"
+		form.submit()
+	}
+</script>
+
+
+</html>

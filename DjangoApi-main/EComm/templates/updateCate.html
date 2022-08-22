@@ -1,0 +1,32 @@
+<html>
+<head>
+	<title>Update Category</title>
+
+</head>
+<body>
+<form action='' id="update_cate" method="POST">
+
+	{% csrf_token %}
+
+	<label for="">Category Id</label>{{id}}<br><br>
+
+	<label for="">Category Name</label>
+	<input type="text"  id="name" name="name" placeholder="Input Category Id">
+	<br><br>
+
+	<button type="button" onclick="submitData({{id}})">Update </button>
+
+</form>
+
+</body>
+
+<script>
+	function submitData(id){
+		let form =  document.getElementById('update_cate')
+		form.action = "/updateCate/"+id+"/"
+		form.submit()
+	}
+</script>
+
+
+</html>

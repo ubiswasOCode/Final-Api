@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<title>Show Product</title>
+		
+	</head>
+<body>
+	
+<h2>Product List is</h2>
+
+<table border="2">
+	<tr>
+		<th>ID</th>
+		<th>Category</th>
+		<th>Name</th>
+		<th>Brand</th>
+		<th>Description</th>
+		<th>Price</th>
+	</tr>
+
+	{% for i in response %}
+		<tr>
+			<td>{{i.id}}</td>
+			<td>{{i.category}}</td>
+			<td>{{i.name}}</td>
+			<td>{{i.brand}}</td>
+			<td>{{i.description}}</td>
+			<td>{{i.price}}</td>
+			
+			<td><button type="button" name="id" id="id"><a onclick="returnUrl({{i.id}})">edit</a></button></td>
+
+			<td><button type="button" onclick="DelPro({{i.id}})">delete</button></td>
+			
+	{% endfor %}
+	{% comment %} <input type="text" id="proid" name="id" placeholder="input ID No">
+	<p id="pro"> Done</p> {% endcomment %}
+	
+</tr>
+</table>	
+
+{% comment %} <form action="/UpdatePro/" method="GET" >
+	{% csrf_token %}
+	
+	<input type="text" id="proid" name="id" placeholder="input Number">
+	<button type="submit" value="Submit">Submit</button>
+
+</form> {% endcomment %}
+
+<form action="/DelPro/" id="pro_del" method="POST" >
+	{% csrf_token %}
+	
+	<input type="hidden" id="proid" name="id" placeholder="input id">
+	{% comment %} <button type="submit" id=i  value="Submit">Submit</button> {% endcomment %}
+
+</form>
+
+
+
+{% comment %} <form action="/DelPro/" method="POST" >
+	{% csrf_token %}
+	
+	<input type="text" id="product" name="id" placeholder="input id">
+	<button type="submit"  value="Submit">Submit</button>
+	
+</form> {% endcomment %}
+
+<script>
+
+	function DelPro(id) {
+		let valu=document.getElementById("proid");
+		valu.value=id
+		let form =  document.getElementById('pro_del')
+		form.submit()
+
+	}
+
+	function returnUrl(i)
+	{	
+		window.location = "http://127.0.0.1:8000/UpdatePro/"+i+"/"
+	}
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title>Create Product</title>
+	</head>
+<body>
+<h2>Give Product Detail</h2>
+
+	<form action="/CreatePro/" method="POST">
+
+		{% csrf_token %}
+	
+		<label for="">Category Name</label>
+		<input type="text"  id="category" name="category" placeholder="Input ID">
+		<br><br>
+		
+		 <label for="">Name</label>
+		<input type="text" id="name "name="name" placeholder="Enter Name">
+		<br><br> 
+		<label for="">Brand</label>
+		<input type="text" id="brand"name="brand" placeholder="Enter Brand Name">
+		<br><br>
+		
+		<label for="">Description</label>
+		<input type="text" id="description" name="description" placeholder="Enter Description">
+		<br><br>
+
+		<label for="">Price</label>
+		<input type="number" id="price"name="price" placeholder="Enter Price">
+		<br><br>
+	
+		<button type="submit">Create </button>
+
+	</form>
+
+</body>
+</html>
