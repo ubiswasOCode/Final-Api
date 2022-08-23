@@ -47,18 +47,19 @@ def getuser(request):
 
 
 def Updateuser(request, id):
-    if request.method == "PUT":
+    if request.method == "POST":
         print(request, "data-------")
 
         # print(request.PUT,"Data________")
         response = requests.put(
-            f'http://127.0.0.1:8000/api/updateuser/{id}/', data=request.PUT)
+            f'http://127.0.0.1:8000/api/updateuser/{id}/', data=request.POST)
         return render(request, 'userUpdate.html')
 
     if request.method == "POST":
         print(request.POST)
 
-    return render(request, 'userUpdate.html', {"id": id})
+    return render(request, 'userUpdate.html', {"id": id})   
+
 
 
 def deleteuser(request):

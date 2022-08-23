@@ -145,8 +145,13 @@ def updateproduct(request, pk):
     # print(request,"data__________-")
     updateproducts = Product.objects.get(id=pk)
     data = request.data
-    category = Category.objects.get(category=pk)
-    # updateproducts.category = data['category']
+    # category = Category.objects.get(category=pk) //From My Side
+
+    category = Category.objects.get(pk = data['category'])
+    # print(category, "----------cATEGORY")
+    
+    print(category.id)
+    updateproducts.category = category
     updateproducts.name = data['name']
     updateproducts.brand = data['brand']
     updateproducts.description = data['description']
@@ -154,7 +159,7 @@ def updateproduct(request, pk):
     print(updateproducts, "data__________----")
 
     updateproducts.save()
-    serializer = productSerializer(updateproducts)
+    serializer = productSerializer(updateproducts,)
     print(serializer, "data__________-")
 
     return Response(serializer.data)
